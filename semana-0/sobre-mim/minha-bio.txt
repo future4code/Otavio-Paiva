@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 Meu nome é Otavio Augusto, tenho 28 anos, resido em Volta Redonda - RJ e sou formado em Engenharia Civil, estou em fase de transição de carreira, e casado.
+=======
+Meu nome é Otavio Augusto, tenho 28 anos, resido em Volta Redonda - RJ e sou formado em Engenharia Civil, estou em fase de transição de carreira.
+>>>>>>> master
