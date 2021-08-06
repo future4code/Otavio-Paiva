@@ -1,0 +1,3 @@
+#Aprendizados da semana
+
+Nessa primeira semana, tivemos palestras sobre como vai ser nossa rotina dentro da **Labenu** o que iremos aprender no decorrer do curso, também aprendemos os conceitos de **terminal e interface gráfica**. Aprendemos a trabalhar dentro dos terminais com comandos específicos usados no terminal, e através do terminal usar **Git** para subir e guardar nossos repositórios no **GitHub**.
