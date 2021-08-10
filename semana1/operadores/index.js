@@ -23,11 +23,11 @@ console.log("O resto da divisão de", par, "por 2 é:", par%2)
 // O resultado será diferente de 0, nesse caso será igual a 1
 
 // 3)
-const idade = Number(prompt("Qual sua idade?"))
+const idade1 = Number(prompt("Qual sua idade?"))
 
-console.log("Você tem", idade*12, "meses de idade.")
-console.log("Você tem", idade*365, "dias de idade.")
-console.log("Você tem", idade*24*365, "meses de idade.")
+console.log("Você tem", idade1*12, "meses de idade.")
+console.log("Você tem", idade1*365, "dias de idade.")
+console.log("Você tem", idade1*24*365, "meses de idade.")
 
 // 4)
 const primeiroNumero = Number(prompt("Escreva um número"))
