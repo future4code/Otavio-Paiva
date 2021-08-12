@@ -1,10 +1,5 @@
-1 - "Liberdade Provisória" - Henrique e Juliano.
-2 - "Don't start now" - Dua Lipa.
-3 - Recairei - Barões da Pisadinha.
-4 - "Oh Juliana" - MC Niack.
-5 - "Graveto" - Marília Mendonça.
-6 - "Sentadão" - Pedro Sampaio.
-7 - "Amor de Que" - Pabllo Vittar.
-8 - "A gente fez amor" - Gusttavo Lima.
-9 - "Tudo OK" - Thiaguinho MT, Mila e JS o Mão de Ouro
-10 - "O homem disparou" - César Araújo e Karkará
+<<<<<<< HEAD
+Meu nome é Otavio Augusto, tenho 28 anos, resido em Volta Redonda - RJ e sou formado em Engenharia Civil, estou em fase de transição de carreira, e casado.
+=======
+Meu nome é Otavio Augusto, tenho 28 anos, resido em Volta Redonda - RJ e sou formado em Engenharia Civil, estou em fase de transição de carreira.
+>>>>>>> master
