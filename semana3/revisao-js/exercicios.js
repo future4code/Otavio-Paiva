@@ -31,7 +31,14 @@ function retornaNumerosPares(array) {
 
 // EXERCÍCIO 05
 function retornaNumerosParesElevadosADois(array) {
- 
+    let arrayPares = array.filter((valor) =>{
+        return (valor % 2 === 0)
+    })
+    let arrayAoQuadrado = arrayPares.map((valor) =>{
+        return valor*valor
+    })
+    
+    return arrayAoQuadrado    
 }
 
 // EXERCÍCIO 06
