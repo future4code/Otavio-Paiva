@@ -56,6 +56,25 @@ function retornaMaiorNumero(array) {
 
 // EXERCÍCIO 07
 function retornaObjetoEntreDoisNumeros(num1, num2) {
+    const obj = {}
+    let maiorNumero
+    let menorNumero
+    if(num1 >= num2){
+        maiorNumero = num1
+        menorNumero = num2
+    } else if (num1 < num2){
+        maiorNumero = num2
+        menorNumero = num1
+    } 
+
+    maiorDivisivelPorMenor = maiorNumero % menorNumero === 0
+    diferenca = maiorNumero - menorNumero
+    console.log(maiorNumero, menorNumero, diferenca)
+
+    obj.maiorNumero = maiorNumero
+    obj.maiorDivisivelPorMenor = maiorDivisivelPorMenor
+    obj.diferenca = diferenca
+    return obj
 
 }
 
@@ -65,8 +84,9 @@ function retornaNPrimeirosPares(n) {
 }
 
 // EXERCÍCIO 09
-function classificaTriangulo(ladoA, ladoB, ladoC) {
+function classificaTriangulo(ladoA, ladoB, ladoC) {   
 
+    
 }
 
 // EXERCÍCIO 10
@@ -76,7 +96,7 @@ function retornaSegundoMaiorESegundoMenor(array) {
 
 // EXERCÍCIO 11
 function retornaChamadaDeFilme(filme) {
-   
+  
 }
 
 // EXERCÍCIO 12
