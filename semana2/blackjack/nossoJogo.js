@@ -3,16 +3,15 @@ const blackJack = () =>{
    
    function startGame(){
       const start = confirm("Quer iniciar uma nova rodada?")
-      if(start){  
+      if(start){           
          const user = () =>{
             const carta1 = comprarCarta()
             const carta2 = comprarCarta()           
-            const somaCartas1 = (carta1.valor + carta2.valor)
+            const somaCartas1 = (carta1.valor + carta2.valor)        
             
             console.log(`Usuário - cartas: ${carta1.texto} ${carta2.texto} - ${somaCartas1}`)
             return somaCartas1
-         }         
-
+         } 
         const valorUser = user()
       
          const computer = () =>{
