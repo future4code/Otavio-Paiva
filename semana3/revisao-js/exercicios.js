@@ -136,20 +136,27 @@ function retornaPessoasAutorizadas(pessoas) {
 
 // EXERCÍCIO 13B
 function retornaPessoasNaoAutorizadas(pessoas) {
-  
+  const pessoaNaoAutorizada = pessoas.filter((valor) => { 
+    if(valor.altura >= 1.5 && valor.idade > 14 && valor.idade < 60){
+        return false
+    }    
+    return true
+   })
+
+   return pessoaNaoAutorizada
 }
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
-
+    
 }
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-  
+    
 }
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
-   
+    
 }
