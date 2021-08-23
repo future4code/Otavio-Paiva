@@ -96,7 +96,9 @@ function retornaSegundoMaiorESegundoMenor(array) {
 
 // EXERCÍCIO 11
 function retornaChamadaDeFilme(filme) {
-  
+   let osAtores = filme.atores.toString().replaceAll(",", ", ")
+
+   return `Venha assistir ao filme ${filme.nome}, de ${filme.ano}, dirigido por ${filme.diretor} e estrelado por ${osAtores}.`
 }
 
 // EXERCÍCIO 12
