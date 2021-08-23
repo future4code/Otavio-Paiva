@@ -102,10 +102,10 @@ function classificaTriangulo(ladoA, ladoB, ladoC) {
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
-    let menor 
-    let maior 
-    let segundoMenor 
-    let segundoMaior 
+    let menor = Infinity
+    let maior = -Infinity
+    let segundoMenor = Infinity
+    let segundoMaior = -Infinity
     let novoArray = []
     for (numero of array) {
       if (numero < menor) {
@@ -119,7 +119,7 @@ function retornaSegundoMaiorESegundoMenor(array) {
       if (numero < segundoMenor && numero !== menor) {
         segundoMenor = numero
       }
-      if (numero > segundoMaior && num !== maior) {
+      if (numero > segundoMaior && numero !== maior) {
         segundoMaior = numero
       }
     }
