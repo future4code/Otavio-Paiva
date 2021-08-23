@@ -96,7 +96,7 @@ function classificaTriangulo(ladoA, ladoB, ladoC) {
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
-  
+   
 }
 
 // EXERCÍCIO 11
@@ -108,7 +108,18 @@ function retornaChamadaDeFilme(filme) {
 
 // EXERCÍCIO 12
 function retornaPessoaAnonimizada(pessoa) {
-   
+   const info = {
+       nome: pessoa.nome,
+       idade: pessoa.idade,
+       email: pessoa.email,
+       endereco: pessoa.endereco,
+   }
+
+   const infoSpread = {
+       ...info,
+       nome: "ANÔNIMO"
+   }
+   return infoSpread
 }
 
 // EXERCÍCIO 13A
