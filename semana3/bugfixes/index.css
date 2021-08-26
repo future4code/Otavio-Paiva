@@ -25,6 +25,10 @@ button:focus {
     color: white;
 }
 
+button:hover {
+    color: white;
+}
+
 img {
     width: 60px;
 }
@@ -109,6 +113,11 @@ td button {
     border-radius: 5px;
     color: black;
 }
+
+td button:hover{
+    background-color: #caae31;
+}
+
 
 .container-table{
     display: flex;
