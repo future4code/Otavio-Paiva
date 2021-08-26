@@ -48,6 +48,12 @@ div>p:first-child {
     width: 20px;
 }
 
+.img-lupa:hover {
+    width: 20px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
 .alinhando-botao{
     text-align: center;
 }
@@ -70,9 +76,7 @@ div>p:first-child {
     text-align: center;
 }
 
-.icone {
-    height: 15px;
-}
+
 
 
 /** 
