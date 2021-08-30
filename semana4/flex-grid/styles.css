@@ -1,0 +1,114 @@
+*{
+  margin: 0;
+}
+
+header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background-color: mediumvioletred;
+}
+
+header>div>img{
+  width: 20px;
+  height: 20px;  
+}
+
+header>div{
+  display: flex;
+  align-items: center;
+}
+
+header>div>h1{
+  margin-left: 24px;
+  font-size: 24px;
+}
+
+main{
+  display: flex;  
+}
+
+nav{
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  background-color: #f2d0e0;
+  padding: 20px;
+}
+
+nav>div{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+
+nav>div>img{
+  width: 20px;
+  height: 20px;
+}
+
+.nav-link{
+  display: flex;
+  align-items: center;
+}
+
+.nav-link>img{
+  width: 20px;
+  height: 20px;
+  
+}
+
+.nav-link>h2{
+  margin-left: 20px; 
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+section{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 10px 20px;
+  gap: 20px;
+}
+
+section>div{
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+section>div>h1{
+  text-align: center;
+  margin-top: 8px;
+}
+
+section>div>p{
+  text-align: center;
+  font-size: 20px;
+  margin-top: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+
+section>div>img{
+  width: 100%;
+  height: 100%;
+}
+
+footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  background-color: mediumvioletred;
+}
+footer>p{
+  font-weight: bold;
+}
