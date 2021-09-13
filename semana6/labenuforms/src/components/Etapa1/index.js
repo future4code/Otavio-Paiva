@@ -40,30 +40,6 @@ const Container = styled.div`
 `;
 
 export default class FirstStep extends React.Component {
-  state = {
-    section: "second",
-  };
-
-  changeToStep = () => {
-    this.setState({ section: "second" });
-  };
-
-  changeToStepTwoGeneral = () => {
-    this.setState({ section: "secondGeneral" });
-  };
-
-  changeToStepThree = () => {
-    this.setState({ section: "third" });
-  };
-
-  pageRender = () => {
-    if (this.state.section) {
-      return <SecondStep />;
-    } else {
-      return <p>Pagina não encontrada</p>;
-    }
-  };
-
   render() {
     return (
       <Container>
