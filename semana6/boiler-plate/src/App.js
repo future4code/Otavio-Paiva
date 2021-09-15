@@ -2,27 +2,104 @@ import React from "react";
 import styled from "styled-components";
 import "./styles.css";
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Header = styled.div`
+  background: #002939;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+
+  h1 {
+    color: #e4cfa9;
+    text-transform: uppercase;
+  }
+`;
+
+const ContentMain = styled.div`
+  background: #e4cfa9;
+  width: 100%;
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+`;
+
+const Board = styled.div`
+  background: #f4e6c1;
+  width: 800px;
+  padding: 20px;
+  border-radius: 10px;
+`;
+
+const InputsContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  input {
+    width: 100%;
+    margin-right: 40px;
+    height: 28px;
+    border-radius: 4px;
+    border: none;
+  }
+
+  button {
+    background-color: #002939;
+    border: 1px solid #e4cfa9;
+    color: #e4cfa9;
+    font-weight: bold;
+    cursor: pointer;
+    width: 180px;
+    border-radius: 4px;
+  }
+`;
+
+const InputsFiltro = styled.div`
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  select {
+    height: 28px;
+    border-radius: 4px;
+    width: 140px;
+  }
+`;
+
 const TarefaList = styled.ul`
   padding: 0;
-  width: 200px;
+  margin-top: 20px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Content = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const Tarefa = styled.li`
   text-align: left;
-  text-decoration: ${({ completa }) => (completa ? "line-through" : "none")};
-`;
+  color: ${({ completa }) => (completa ? "black" : "red")};
 
-const Container = styled.div``;
+  h1 {
+    font-size: 20px;
+  }
+`;
 
 const BotaoRemove = styled.div``;
-
-const BotaoEditar = styled.div``;
-
-const InputsContainer = styled.div`
-  display: grid;
-  grid-auto-flow: column;
-  gap: 10px;
-`;
 
 class App extends React.Component {
   state = {
@@ -130,45 +207,56 @@ class App extends React.Component {
     });
 
     return (
-      <div className="App">
-        <h1>Lista de tarefas</h1>
-        <InputsContainer>
-          <input value={this.state.inputValue} onChange={this.onChangeInput} />
-          <button onClick={this.criaTarefa}>Adicionar</button>
-        </InputsContainer>
-        <br />
+      <Container>
+        <Header>
+          <h1>Lista de tarefas</h1>
+        </Header>
+        <ContentMain>
+          <Board>
+            <InputsContainer>
+              <input
+                value={this.state.inputValue}
+                onChange={this.onChangeInput}
+                placeholder="Digite aqui a tarefa"
+              />
+              <button onClick={this.criaTarefa}>Adicionar</button>
+            </InputsContainer>
 
-        <InputsContainer>
-          <label>Filtro</label>
-          <select value={this.state.filter} onChange={this.onChangeFilter}>
-            <option value="">Nenhum</option>
-            <option value="pendentes">Pendentes</option>
-            <option value="completas">Completas</option>
-          </select>
-        </InputsContainer>
+            <InputsFiltro>
+              <select value={this.state.filter} onChange={this.onChangeFilter}>
+                <option value="">Filtro</option>
+                <option value="pendentes">Pendentes</option>
+                <option value="completas">Completas</option>
+              </select>
+            </InputsFiltro>
 
-        <TarefaList>
-          {listaFiltrada.map((tarefa) => {
-            return (
-              <Container key={tarefa?.id} completa={tarefa.completa}>
-                <Tarefa onClick={() => this.selectTarefa(tarefa.id)}>
-                  {tarefa.texto}
-                </Tarefa>
-                <BotaoRemove onClick={() => this.removeTarefa(tarefa.id)}>
-                  Remover
-                </BotaoRemove>
-                <BotaoEditar onClick={() => this.editarTarefa(tarefa.id)}>
-                  Editar
-                </BotaoEditar>
-                <input
-                  value={this.state.inputEditar}
-                  onChange={() => this.onChangeEditar(tarefa.texto)}
-                />
-              </Container>
-            );
-          })}
-        </TarefaList>
-      </div>
+            <TarefaList>
+              {listaFiltrada.map((tarefa) => {
+                return (
+                  <Content key={tarefa?.id}>
+                    <Tarefa
+                      onClick={() => this.selectTarefa(tarefa.id)}
+                      completa={tarefa.completa}
+                    >
+                      <h1>{tarefa.texto}</h1>
+                    </Tarefa>
+                    <BotaoRemove onClick={() => this.removeTarefa(tarefa.id)}>
+                      Remover
+                    </BotaoRemove>
+                    {/* <BotaoEditar onClick={() => this.editarTarefa(tarefa.id)}>
+                      Editar
+                    </BotaoEditar>
+                    <input
+                      value={this.state.inputEditar}
+                      onChange={() => this.onChangeEditar(tarefa.texto)}
+                    /> */}
+                  </Content>
+                );
+              })}
+            </TarefaList>
+          </Board>
+        </ContentMain>
+      </Container>
     );
   }
 }
