@@ -7,7 +7,6 @@ import { UserList } from "./components/UserList";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
 `;
 
 export default class App extends React.Component {

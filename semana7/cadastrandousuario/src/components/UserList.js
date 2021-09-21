@@ -1,5 +1,5 @@
 import React from "react";
-import { FiArrowLeft } from "react-icons/fi";
+import { FiArrowLeft, FiX } from "react-icons/fi";
 import styled from "styled-components";
 import axios from "axios";
 
@@ -54,9 +54,23 @@ const Header = styled.div`
 
 const Content = styled.div`
   display: flex;
+  align-items: center;
 
-  li {
-    list-style: none;
+  h1 {
+    font-size: 16px;
+  }
+
+  button {
+    height: 20px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      color: red;
+    }
   }
 `;
 
@@ -89,11 +103,27 @@ export class UserList extends React.Component {
       });
   };
 
+  deleteUser = (id) => {
+    const url = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`;
+
+    axios
+      .delete(url, headers)
+      .then((res) => {
+        this.getAllUsers();
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
+
   render() {
     const userListComponents = this.state.userList.map((user) => {
       return (
         <Content key={user.id}>
-          <li>{user.name}</li>
+          <h1>{user.name}</h1>
+          <button onClick={() => this.deleteUser(user.id)}>
+            <FiX />
+          </button>
         </Content>
       );
     });
