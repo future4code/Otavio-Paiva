@@ -79,6 +79,7 @@ export class Register extends React.Component {
       .then((res) => {
         this.setState({ userName: "" });
         this.setState({ userEmail: "" });
+        alert("Usuário criado com sucesso");
       })
       .catch((err) => {
         alert(err.response.data.message);
