@@ -92,8 +92,8 @@ export class UserList extends React.Component {
   render() {
     const userListComponents = this.state.userList.map((user) => {
       return (
-        <Content>
-          <li key={user.id}>{user.name}</li>
+        <Content key={user.id}>
+          <li>{user.name}</li>
         </Content>
       );
     });

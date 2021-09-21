@@ -64,7 +64,8 @@ export class Register extends React.Component {
     userEmail: "",
   };
 
-  createUser = () => {
+  createUser = (e) => {
+    e.preventDefault();
     const url =
       "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users";
 
@@ -101,7 +102,7 @@ export class Register extends React.Component {
           </button>
           <h1>Cadastro de usuários</h1>
         </Header>
-        <form>
+        <form onSubmit={this.createUser}>
           <label htmlFor="name">Nome:</label>
           <input
             type="text"
@@ -116,7 +117,7 @@ export class Register extends React.Component {
             value={this.state.userEmail}
             onChange={this.handleCreateEmail}
           />
-          <button onClick={this.createUser}>Cadastrar</button>
+          <button type="submit">Cadastrar</button>
         </form>
       </Container>
     );
