@@ -1,5 +1,5 @@
 import React from "react";
-import { FiArrowLeft, FiX } from "react-icons/fi";
+import { FiArrowLeft, FiX, FiEdit2 } from "react-icons/fi";
 import styled from "styled-components";
 import axios from "axios";
 
@@ -65,42 +65,57 @@ const Content = styled.div`
     border: none;
     background-color: #fff;
     cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
 
     svg {
       width: 20px;
       height: 20px;
-      color: red;
+      color: black;
     }
   }
 `;
 
-// const headers = {
-//   headers: {
-//     Authorization: "otavio-augusto-maryam",
-//   },
-// };
+const UserData = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  p {
+    margin: 0;
+    margin: 0px 16px;
+  }
+`;
 
 export class UserList extends React.Component {
   state = {
     userList: [],
+    details: false,
+    userDetails: {},
   };
 
   componentDidMount = () => {
     this.getAllUsers();
   };
 
+  getUserById = async (id) => {
+    const url = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`;
+
+    try {
+      const res = await axios.get(url, {
+        headers: {
+          Authorization: "otavio-augusto-maryam",
+        },
+      });
+      this.setState({ userDetails: res.data });
+    } catch (err) {
+      console.log(err.response);
+    }
+  };
+
   getAllUsers = async () => {
     const url =
       "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users";
-
-    // axios
-    //   .get(url, headers)
-    //   .then((res) => {
-    //     this.setState({ userList: res.data });
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.response);
-    //   });
 
     try {
       const res = await axios.get(url, {
@@ -115,40 +130,70 @@ export class UserList extends React.Component {
   };
 
   deleteUser = async (id) => {
+    const confirmationDelete = window.confirm(
+      "Tem certeza de que deseja deletar?"
+    );
+
     const url = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`;
 
-    try {
-      const res = await axios.delete(url, {
-        headers: {
-          Authorization: "otavio-augusto-maryam",
-        },
-      });
-      this.getAllUsers(res);
-    } catch (err) {
-      alert(err.response);
-    }
+    if (confirmationDelete === true) {
+      try {
+        const res = await axios.delete(url, {
+          headers: {
+            Authorization: "otavio-augusto-maryam",
+          },
+        });
 
-    // axios
-    //   .delete(url, headers)
-    //   .then((res) => {
-    //     this.getAllUsers();
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.response);
-    //   });
+        this.getAllUsers(res);
+      } catch (err) {
+        alert(err.response);
+      }
+    } else {
+      this.getAllUsers();
+    }
+  };
+
+  handleChangeDetail = (id) => {
+    this.setState({ details: !this.state.details });
+    this.getUserById(id);
   };
 
   render() {
     const userListComponents = this.state.userList.map((user) => {
       return (
         <Content key={user.id}>
-          <h1>{user.name}</h1>
+          <button onClick={() => this.handleChangeDetail(user.id)}>
+            {user.name}
+          </button>
           <button onClick={() => this.deleteUser(user.id)}>
             <FiX />
           </button>
+          <hr />
         </Content>
       );
     });
+
+    const userDetailsComponents = (
+      <Content key={this.state.userDetails.id}>
+        <button onClick={() => this.handleChangeDetail()}>
+          <FiArrowLeft />
+        </button>
+        <UserData>
+          <p>
+            Nome: <b>{this.state.userDetails.name}</b>
+          </p>
+          <p>
+            E-mail: <b>{this.state.userDetails.email}</b>
+          </p>
+        </UserData>
+        <button>
+          <FiEdit2 />
+        </button>
+        <button onClick={() => this.deleteUser(this.state.userDetails.id)}>
+          <FiX />
+        </button>
+      </Content>
+    );
 
     return (
       <Container>
@@ -156,9 +201,15 @@ export class UserList extends React.Component {
           <button onClick={this.props.changeStep}>
             <FiArrowLeft />
           </button>
-          <h1>Usuários cadastrados:</h1>
+          <h1>
+            {this.state.details === false
+              ? "Usuários cadastrados"
+              : "Detalhes do usuário"}
+          </h1>
         </Header>
-        {userListComponents}
+        {this.state.details === false
+          ? userListComponents
+          : userDetailsComponents}
       </Container>
     );
   }

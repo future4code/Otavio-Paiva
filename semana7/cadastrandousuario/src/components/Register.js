@@ -87,17 +87,6 @@ export class Register extends React.Component {
     } catch (err) {
       alert(err.response.data.message);
     }
-
-    // axios
-    //   .post(url, body, headers)
-    //   .then((res) => {
-    //     this.setState({ userName: "" });
-    //     this.setState({ userEmail: "" });
-    //     alert("Usuário criado com sucesso");
-    //   })
-    //   .catch((err) => {
-    //     alert(err.response.data.message);
-    //   });
   };
 
   handleCreateUser = (e) => {
