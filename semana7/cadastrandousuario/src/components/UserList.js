@@ -74,11 +74,11 @@ const Content = styled.div`
   }
 `;
 
-const headers = {
-  headers: {
-    Authorization: "otavio-augusto-maryam",
-  },
-};
+// const headers = {
+//   headers: {
+//     Authorization: "otavio-augusto-maryam",
+//   },
+// };
 
 export class UserList extends React.Component {
   state = {
@@ -89,31 +89,53 @@ export class UserList extends React.Component {
     this.getAllUsers();
   };
 
-  getAllUsers = () => {
+  getAllUsers = async () => {
     const url =
       "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users";
 
-    axios
-      .get(url, headers)
-      .then((res) => {
-        this.setState({ userList: res.data });
-      })
-      .catch((err) => {
-        console.log(err.response);
+    // axios
+    //   .get(url, headers)
+    //   .then((res) => {
+    //     this.setState({ userList: res.data });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.response);
+    //   });
+
+    try {
+      const res = await axios.get(url, {
+        headers: {
+          Authorization: "otavio-augusto-maryam",
+        },
       });
+      this.setState({ userList: res.data });
+    } catch (err) {
+      alert(err.response);
+    }
   };
 
-  deleteUser = (id) => {
+  deleteUser = async (id) => {
     const url = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`;
 
-    axios
-      .delete(url, headers)
-      .then((res) => {
-        this.getAllUsers();
-      })
-      .catch((err) => {
-        console.log(err.response);
+    try {
+      const res = await axios.delete(url, {
+        headers: {
+          Authorization: "otavio-augusto-maryam",
+        },
       });
+      this.getAllUsers(res);
+    } catch (err) {
+      alert(err.response);
+    }
+
+    // axios
+    //   .delete(url, headers)
+    //   .then((res) => {
+    //     this.getAllUsers();
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.response);
+    //   });
   };
 
   render() {

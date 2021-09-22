@@ -52,11 +52,11 @@ const Header = styled.div`
   }
 `;
 
-const headers = {
-  headers: {
-    Authorization: "otavio-augusto-maryam",
-  },
-};
+// const headers = {
+//   headers: {
+//     Authorization: "otavio-augusto-maryam",
+//   },
+// };
 
 export class Register extends React.Component {
   state = {
@@ -64,7 +64,7 @@ export class Register extends React.Component {
     userEmail: "",
   };
 
-  createUser = (e) => {
+  createUser = async (e) => {
     e.preventDefault();
     const url =
       "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users";
@@ -74,16 +74,30 @@ export class Register extends React.Component {
       email: this.state.userEmail,
     };
 
-    axios
-      .post(url, body, headers)
-      .then((res) => {
-        this.setState({ userName: "" });
-        this.setState({ userEmail: "" });
-        alert("Usuário criado com sucesso");
-      })
-      .catch((err) => {
-        alert(err.response.data.message);
+    try {
+      const res = await axios.post(url, body, {
+        headers: {
+          Authorization: "otavio-augusto-maryam",
+        },
       });
+      this.setState({ userName: "" });
+      this.setState({ userEmail: "" });
+      alert("Usuário criado com sucesso");
+      return res;
+    } catch (err) {
+      alert(err.response.data.message);
+    }
+
+    // axios
+    //   .post(url, body, headers)
+    //   .then((res) => {
+    //     this.setState({ userName: "" });
+    //     this.setState({ userEmail: "" });
+    //     alert("Usuário criado com sucesso");
+    //   })
+    //   .catch((err) => {
+    //     alert(err.response.data.message);
+    //   });
   };
 
   handleCreateUser = (e) => {
